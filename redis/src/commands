@@ -1,0 +1,51 @@
+To start the redis server type in command prompt
+--------------
+redis-server
+
+redis-cli -h demo-1-redis-master -p 6379
+auth <xxxxxxxxx>
+
+
+
+auth <pass>
+acl list                                show current user
+acl whoami                              current user
+acl setuser[username] >[password]     create an user with password
+acl setuser[username] nopass           creates an user with no password
+
+
+
+acl setuser[username] on                enables the user
+acl setuser[username] off               disable the user
+acl deluser [username]                  remove the user
+
+
+
+acl setuser[username] >[password] on
+
+allcommand/ +@all     access to all commands in redis
+-get, -set...           no access to get, set commands
++@set,+@hash,+@list     access set and hash related commands
+allkeys /~*             access to all the keys in redis
+~numbers:*              access to keys starting with numbers:
+
+
+
+
+
+Publishing to a Stream:
+
+XADD stream_name ID key1 value1 key2 value2 key3 value3....keyN valueN
+
+XADD tickets * name 'Nishtha bhardwaj' seat "B12" movieID 53 sessionId 832
+
+* - default ID that is timestamp of the server
+
+XREAD STREAMS tickets 0-0
+XREAD BLOCK 60000 STREAMS tickets $
+
+
+create consumer group
+---------------
+
+XGROUP CREATE tickets officer_group $

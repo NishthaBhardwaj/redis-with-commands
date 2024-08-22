@@ -1,0 +1,15 @@
+<beanio xmlns="http://www.beanio.org/2012/03">
+
+    <!-- 'format' identifies the type of stream -->
+    <stream name="inputMessageStream" format="csv">
+        <!-- 'class' binds the header record to a java.util.HashMap -->
+        <record name="inputNameAddress" class="com.camel.beans.NameAddress">
+
+            <field name="name" minOccurs="1" />
+            <field name="houseNumber" minOccurs="1" />
+            <field name="city" minOccurs="1" />
+            <field name="province" minOccurs="1" />
+            <field name="postalCode" minOccurs="1" />
+        </record>
+    </stream>
+</beanio>
